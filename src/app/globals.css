@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
+/* Palette pulled from the shop mood board */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f8f3ec; /* warm white walls */
+  --linen: #efe7dc;
+  --greige: #cbbfae; /* Silver Drop */
+  --taupe: #8c7462; /* Mushroom Cap */
+  --wood: #7a5334; /* slat wall */
+  --gold: #c39a4f; /* lighting + hardware */
+  --gold-soft: #e6c98f;
+  --charcoal: #2d2a27; /* accent chairs */
+  --sage: #5f7352; /* greenery */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-linen: var(--linen);
+  --color-greige: var(--greige);
+  --color-taupe: var(--taupe);
+  --color-wood: var(--wood);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-charcoal: var(--charcoal);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-jost);
+  --font-serif: var(--font-cormorant);
+  --font-script: var(--font-script);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+}
+
+/* Vertical wood slats, like the feature wall */
+.slat-wall {
+  background-color: var(--wood);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.28) 0 3px,
+    transparent 3px 10px,
+    rgba(255, 255, 255, 0.06) 10px 12px,
+    transparent 12px 22px
+  );
+}
+
+/* Warm neon glow for the script wordmark */
+.neon {
+  color: #fff4dc;
+  text-shadow:
+    0 0 4px #ffe2a8,
+    0 0 14px #f5b95a,
+    0 0 32px #e89a3a;
+}
+
+.eyebrow {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
