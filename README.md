@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Katnique Nails
 
-## Getting Started
+Landing page for Katnique Nails, 10960 S. Eastern Ave. #104, Henderson, NV 89052.
 
-First, run the development server:
+Built with Next.js 16 (App Router), TypeScript, and Tailwind CSS v4.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run build`: production build
+- `npm run start`: serve the production build
+- `npm run lint`: run ESLint
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+Most updates only touch [`src/lib/site.ts`](src/lib/site.ts):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| What | Where in `site.ts` |
+| --- | --- |
+| Phone, address, Instagram, booking link | `site` |
+| Business hours (one line per day; use `"Closed"` for days off) | `site.hours` |
+| Services and prices | `services` |
+| Gallery photos | `gallery` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The page layout and sections (hero, about, services, gallery, visit) live in [`src/app/page.tsx`](src/app/page.tsx).
 
-## Deploy on Vercel
+### Colors and fonts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The palette comes from the shop's mood board and is defined in [`src/app/globals.css`](src/app/globals.css). Change a value in `:root` to update it across the whole site. The colors are available as Tailwind classes (`bg-wood`, `text-gold`, `border-greige`, and so on).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Fonts (Jost, Cormorant Garamond, Great Vibes) are loaded in [`src/app/layout.tsx`](src/app/layout.tsx).
+
+### Images
+
+Local images are in `public/images/`. The gallery currently uses Unsplash stock photos, which are allowed in [`next.config.ts`](next.config.ts). To use real photos:
+
+1. Add them to `public/images/gallery/`.
+2. Point each `gallery` entry in `site.ts` at its file, for example `"/images/gallery/1.jpg"`.
+3. Remove the Unsplash `remotePatterns` entry from `next.config.ts`.
+
+## Still to do
+
+- [ ] Instagram link
+- [ ] Real nail photos for the gallery
+- [ ] Real salon photos once the remodel is finished
+- [ ] Online booking link, if one is set up (the Book buttons call the salon for now)
