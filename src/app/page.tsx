@@ -61,6 +61,8 @@ function Header() {
         </nav>
         <a
           href={site.bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="eyebrow rounded-full bg-charcoal px-5 py-2.5 text-cream transition hover:bg-wood"
         >
           Book Now
@@ -87,6 +89,8 @@ function Hero() {
           <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
             <a
               href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="eyebrow rounded-full bg-gold px-7 py-3.5 text-charcoal transition hover:bg-gold-soft"
             >
               Book an Appointment
@@ -408,12 +412,22 @@ function Visit() {
               have to rush.
             </p>
           </div>
-          <a
-            href={site.phoneHref}
-            className="eyebrow rounded-full bg-charcoal px-6 py-3.5 text-center text-cream transition hover:bg-wood"
-          >
-            Call {site.phone}
-          </a>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eyebrow flex-1 rounded-full bg-gold px-6 py-3.5 text-center text-charcoal transition hover:bg-gold-soft"
+            >
+              Book Online
+            </a>
+            <a
+              href={site.phoneHref}
+              className="eyebrow flex-1 rounded-full bg-charcoal px-6 py-3.5 text-center text-cream transition hover:bg-wood"
+            >
+              Call {site.phone}
+            </a>
+          </div>
         </div>
       </div>
     </section>

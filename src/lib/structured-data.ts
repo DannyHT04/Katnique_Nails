@@ -34,6 +34,11 @@ export function nailSalonJsonLd() {
     },
     hasMap: site.mapsUrl,
     sameAs: [site.instagram],
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: site.bookingUrl,
+      name: "Book an appointment",
+    },
     openingHoursSpecification,
   };
 }

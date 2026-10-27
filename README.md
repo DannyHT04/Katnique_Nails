@@ -25,7 +25,7 @@ Most updates only touch [`src/lib/site.ts`](src/lib/site.ts):
 
 | What | Where in `site.ts` |
 | --- | --- |
-| Phone, address, Instagram, booking link | `site` |
+| Phone, address, Instagram, booking link (GlossGenius) | `site` |
 | Business hours (one line per day; use `"Closed"` for days off) | `site.hours` |
 | Services and prices | `services` |
 | Gallery photos | `gallery` |
@@ -56,4 +56,3 @@ When the site gets a custom domain, set the `NEXT_PUBLIC_SITE_URL` environment v
 ## Still to do
 
 - [ ] Custom favicon (still the Next.js default)
-- [ ] Online booking link, if one is set up (the Book buttons call the salon for now)
