@@ -103,7 +103,7 @@ function Hero() {
           <div className="absolute -inset-3 rounded-[2rem] bg-gold-soft/20 blur-2xl" />
           <Image
             src="/images/manicure-tables.webp"
-            alt="Katnique Nails manicure tables and pedicure chairs under hexagon ceiling lights"
+            alt="Manicure tables and pedicure chairs under hexagon ceiling lights"
             width={1200}
             height={1600}
             loading="eager"
@@ -129,7 +129,7 @@ function About() {
           </p>
           <Image
             src="/images/meet-katnique.webp"
-            alt="Katnique Nails nail artist in a Katnique apron, standing by the color selection table beneath the Katnique Nails sign"
+            alt="Nail artist in a Katnique apron by the color selection table, beneath the Katnique Nails sign"
             width={1200}
             height={1600}
             sizes="(min-width: 768px) 40vw, 100vw"
@@ -206,7 +206,7 @@ function Salon() {
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:col-span-2 md:aspect-auto">
           <Image
             src="/images/salon-wide.webp"
-            alt="Katnique Nails from the front desk: a row of pedicure chairs, manicure tables and the Katnique Nails sign"
+            alt="View from the front desk: a row of pedicure chairs, manicure tables and the Katnique Nails sign"
             fill
             sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover"
