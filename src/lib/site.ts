@@ -35,22 +35,24 @@ export const site = {
     { days: "Thursday", time: "10:00 AM – 7:00 PM" },
     { days: "Friday", time: "10:00 AM – 7:00 PM" },
     { days: "Saturday", time: "10:00 AM – 7:00 PM" },
-    { days: "Sunday", time: "10:00 AM – 7:00 PM" },
+    { days: "Sunday", time: "Closed" },
   ],
 };
 
-// TODO: replace these Unsplash stock photos with real Katnique work
-const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}?w=900&q=80`;
-
+// Photos live in public/images/gallery/. Add a file there and a line here to show it.
 export const gallery = [
-  { src: unsplash("1519014816548-bf5fe059798b"), alt: "Soft pink manicure" },
-  { src: unsplash("1754799670312-8e7da8e40ad7"), alt: "Navy, gold and white nail art" },
-  { src: unsplash("1604654894610-df63bc536371"), alt: "Black and tortoiseshell nails with a gold ring" },
-  { src: unsplash("1607779097040-26e80aa78e66"), alt: "Mauve, white and silver glitter nails" },
-  { src: unsplash("1754799670410-b282791342c3"), alt: "White and pink heart nail design" },
-  { src: unsplash("1604654894611-6973b376cbde"), alt: "Black manicure with a silver ring" },
-  { src: unsplash("1610992015762-45dca7fa3a85"), alt: "Light pink manicured nails" },
-  { src: unsplash("1735236007245-9dc6e28bbe56"), alt: "Blue and white nail art" },
+  { src: "/images/gallery/01.webp", alt: "Copper and burgundy cat-eye almond nails" },
+  { src: "/images/gallery/02.webp", alt: "Short square nails with a soft pink ombré and white chevron lines" },
+  { src: "/images/gallery/03.webp", alt: "Black cherry stiletto nails with white 3D accent nails and red heart gems" },
+  { src: "/images/gallery/04.webp", alt: "Square nude nails with deep purple shimmer French tips" },
+  { src: "/images/gallery/05.webp", alt: "Sheer pink almond nails" },
+  { src: "/images/gallery/06.webp", alt: "Black and red cat-eye nails with a matching black pedicure" },
+  { src: "/images/gallery/07.webp", alt: "Long nude coffin nails with a gold glitter fade" },
+  { src: "/images/gallery/08.webp", alt: "Dark green cat-eye stiletto nails" },
+  { src: "/images/gallery/09.webp", alt: "Nude nails with black French tips" },
+  { src: "/images/gallery/10.webp", alt: "Black and nude nails with ghost and spiderweb Halloween art" },
+  { src: "/images/gallery/11.webp", alt: "Almond nails with a sheer-to-plum ombré" },
+  { src: "/images/gallery/12.webp", alt: "Black and red cat-eye square nails" },
 ];
 
 export type Service = {

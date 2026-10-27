@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/salon-floor.webp",
+        url: "/images/salon-wide.webp",
         width: 1600,
         height: 1200,
         alt: "Inside Katnique Nails in Henderson, NV",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description: site.description,
-    images: ["/images/salon-floor.webp"],
+    images: ["/images/salon-wide.webp"],
   },
 };
 

@@ -102,8 +102,8 @@ function Hero() {
         <div className="relative mx-auto w-full max-w-md">
           <div className="absolute -inset-3 rounded-[2rem] bg-gold-soft/20 blur-2xl" />
           <Image
-            src="/images/wash-station.webp"
-            alt="Katnique Nails wash station with a wood slat wall and Good Vibes Only neon sign"
+            src="/images/manicure-tables.webp"
+            alt="Katnique Nails manicure tables and pedicure chairs under hexagon ceiling lights"
             width={1200}
             height={1600}
             loading="eager"
@@ -128,10 +128,10 @@ function About() {
             Beauty brought us to nails. Caring for people made us stay.
           </p>
           <Image
-            src="/images/katnique-sign.webp"
-            alt="Katnique Nails sign above the nail color selection table"
-            width={1600}
-            height={1200}
+            src="/images/meet-katnique.webp"
+            alt="Katnique Nails nail artist in a Katnique apron, standing by the color selection table beneath the Katnique Nails sign"
+            width={1200}
+            height={1600}
             sizes="(min-width: 768px) 40vw, 100vw"
             className="mt-10 w-full rounded-2xl object-cover"
           />
@@ -205,8 +205,8 @@ function Salon() {
       <div className="mt-12 grid gap-4 md:h-[520px] md:grid-cols-3">
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:col-span-2 md:aspect-auto">
           <Image
-            src="/images/salon-floor.webp"
-            alt="Katnique Nails salon floor with pedicure chairs, manicure tables and a wall of polish colors"
+            src="/images/salon-wide.webp"
+            alt="Katnique Nails from the front desk: a row of pedicure chairs, manicure tables and the Katnique Nails sign"
             fill
             sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover"
@@ -214,8 +214,8 @@ function Salon() {
         </div>
         <div className="relative aspect-[3/4] overflow-hidden rounded-2xl md:aspect-auto">
           <Image
-            src="/images/pedicure-chairs.webp"
-            alt="Row of massage pedicure chairs along the wood slat wall"
+            src="/images/salon-back.webp"
+            alt="Back of the salon with the Good Vibes Only wash station, polish wall and manicure tables"
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover"

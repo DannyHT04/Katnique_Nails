@@ -22,7 +22,7 @@ export function nailSalonJsonLd() {
     description: site.description,
     url: site.url,
     telephone: site.phone,
-    image: `${site.url}/images/salon-floor.webp`,
+    image: `${site.url}/images/salon-wide.webp`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",

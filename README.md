@@ -40,11 +40,12 @@ Fonts (Jost, Cormorant Garamond, Great Vibes) are loaded in [`src/app/layout.tsx
 
 ### Images
 
-Local images are in `public/images/`. The gallery currently uses Unsplash stock photos, which are allowed in [`next.config.ts`](next.config.ts). To use real photos:
+All photos are in `public/images/`, with nail photos in `public/images/gallery/`. To add a gallery photo:
 
-1. Add them to `public/images/gallery/`.
-2. Point each `gallery` entry in `site.ts` at its file, for example `"/images/gallery/1.jpg"`.
-3. Remove the Unsplash `remotePatterns` entry from `next.config.ts`.
+1. Save it to `public/images/gallery/` (JPG or WebP; around 1000px wide is plenty).
+2. Add a line to the `gallery` list in `site.ts` with its path and a short description of the nails, for example `{ src: "/images/gallery/13.jpg", alt: "Red French tips" }`.
+
+Next.js resizes and converts images automatically, so there's no need to shrink them by hand.
 
 ## SEO
 
@@ -55,5 +56,4 @@ When the site gets a custom domain, set the `NEXT_PUBLIC_SITE_URL` environment v
 ## Still to do
 
 - [ ] Custom favicon (still the Next.js default)
-- [ ] Real nail photos for the gallery
 - [ ] Online booking link, if one is set up (the Book buttons call the salon for now)
