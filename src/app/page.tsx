@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { gallery, services, site } from "@/lib/site";
+import { gallery, services, site, type Service } from "@/lib/site";
+import { nailSalonJsonLd } from "@/lib/structured-data";
 
 const nav = [
   { href: "#about", label: "About" },
+  { href: "#salon", label: "Salon" },
   { href: "#services", label: "Services" },
   { href: "#gallery", label: "Gallery" },
   { href: "#visit", label: "Visit" },
@@ -18,11 +20,18 @@ const promises = [
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(nailSalonJsonLd()).replace(/</g, "\\u003c"),
+        }}
+      />
       <Header />
       <main className="flex-1">
         <Hero />
         <About />
         <Promises />
+        <Salon />
         <Services />
         <Gallery />
         <Visit />
@@ -44,7 +53,7 @@ function Header() {
             <a
               key={n.href}
               href={n.href}
-              className="eyebrow text-charcoal/80 transition hover:text-gold"
+              className="eyebrow text-charcoal/80 transition hover:text-gold-deep"
             >
               {n.label}
             </a>
@@ -90,15 +99,17 @@ function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-lg">
+        <div className="relative mx-auto w-full max-w-md">
           <div className="absolute -inset-3 rounded-[2rem] bg-gold-soft/20 blur-2xl" />
           <Image
-            src="/images/station.webp"
-            alt="Katnique Nails wash station with warm lighting, wood slat wall and polish shelves"
-            width={1312}
-            height={1199}
-            preload
-            className="relative rounded-[1.75rem] border border-gold-soft/30 shadow-2xl"
+            src="/images/wash-station.webp"
+            alt="Katnique Nails wash station with a wood slat wall and Good Vibes Only neon sign"
+            width={1200}
+            height={1600}
+            loading="eager"
+            fetchPriority="high"
+            sizes="(min-width: 768px) 448px, calc(100vw - 32px)"
+            className="relative aspect-[4/5] w-full rounded-[1.75rem] border border-gold-soft/30 object-cover shadow-2xl"
           />
         </div>
       </div>
@@ -117,11 +128,12 @@ function About() {
             Beauty brought us to nails. Caring for people made us stay.
           </p>
           <Image
-            src="/images/entry.webp"
-            alt="Katnique Nails entry wall with framed leaf prints and seating"
-            width={358}
-            height={454}
-            className="mt-10 hidden w-full rounded-2xl object-cover md:block"
+            src="/images/katnique-sign.webp"
+            alt="Katnique Nails sign above the nail color selection table"
+            width={1600}
+            height={1200}
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="mt-10 w-full rounded-2xl object-cover"
           />
         </div>
         <div className="space-y-5 text-lg leading-relaxed text-charcoal/85 md:col-span-3">
@@ -183,46 +195,128 @@ function Promises() {
   );
 }
 
+function Salon() {
+  return (
+    <section id="salon" className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 md:pt-28">
+      <div className="text-center">
+        <p className="eyebrow text-taupe">Our Salon</p>
+        <h2 className="mt-3 font-serif text-5xl">Come Relax With Us</h2>
+      </div>
+      <div className="mt-12 grid gap-4 md:h-[520px] md:grid-cols-3">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:col-span-2 md:aspect-auto">
+          <Image
+            src="/images/salon-floor.webp"
+            alt="Katnique Nails salon floor with pedicure chairs, manicure tables and a wall of polish colors"
+            fill
+            sizes="(min-width: 768px) 66vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl md:aspect-auto">
+          <Image
+            src="/images/pedicure-chairs.webp"
+            alt="Row of massage pedicure chairs along the wood slat wall"
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Services() {
   return (
     <section id="services" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
       <div className="text-center">
         <p className="eyebrow text-taupe">Beautiful Nails · Confidence · Community</p>
         <h2 className="mt-3 font-serif text-5xl">Services &amp; Pricing</h2>
-        <p className="mx-auto mt-4 max-w-xl text-charcoal/70">
+        <p className="mx-auto mt-4 max-w-xl text-charcoal/75">
           Every service begins with a little care for your natural nails.
         </p>
       </div>
-      <div className="mt-14 gap-6 md:columns-2 lg:columns-3">
+      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((group) => (
           <article
             key={group.title}
-            className="mb-6 break-inside-avoid rounded-2xl border border-greige/60 bg-white/60 p-7 shadow-sm"
+            className={`rounded-2xl border border-greige/60 bg-white/60 p-7 shadow-sm ${
+              group.wide ? "md:col-span-2 lg:col-span-3 lg:p-9" : ""
+            }`}
           >
             <h3 className="font-serif text-3xl text-wood">{group.title}</h3>
             {group.tagline && (
-              <p className="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-taupe">
+              <p className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-taupe">
                 {group.tagline}
               </p>
             )}
-            <ul className="mt-5 space-y-3.5">
-              {group.items.map((item) => (
-                <li key={item.name}>
-                  <div className="flex items-baseline gap-3">
-                    <span>{item.name}</span>
-                    <span className="flex-1 translate-y-[-4px] border-b border-dotted border-greige" />
-                    <span className="whitespace-nowrap font-medium text-gold">{item.price}</span>
-                  </div>
-                  {item.note && (
-                    <p className="mt-1 text-sm leading-snug text-charcoal/60">{item.note}</p>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {group.items.some((item) => item.includes) ? (
+              <TierList items={group.items} />
+            ) : (
+              <ul className={`mt-5 ${group.wide ? "gap-x-12 md:columns-2 lg:columns-3" : ""}`}>
+                {group.items.map((item) => (
+                  <li key={item.name} className="mb-3.5 break-inside-avoid">
+                    <PriceRow item={item} />
+                    {item.note && (
+                      <p className="mt-1 text-sm leading-snug text-charcoal/75">{item.note}</p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {group.footnote && (
+              <div className="mt-6 rounded-xl bg-linen px-4 py-3 text-center">
+                <p className="font-serif text-2xl text-wood">{group.footnote.title}</p>
+                <p className="text-sm text-charcoal/75">{group.footnote.text}</p>
+              </div>
+            )}
           </article>
         ))}
       </div>
     </section>
+  );
+}
+
+function PriceRow({ item }: { item: Service }) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <span>{item.name}</span>
+      <span className="flex-1 translate-y-[-4px] border-b border-dotted border-greige" />
+      <span className="whitespace-nowrap font-medium text-gold-deep">{item.price}</span>
+    </div>
+  );
+}
+
+// Side-by-side tiers (e.g. pedicures), with what's included pinned to the bottom of each
+function TierList({ items }: { items: Service[] }) {
+  return (
+    <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map((item) => (
+        <li
+          key={item.name}
+          className="flex flex-col rounded-xl border border-greige/50 bg-cream/70 p-5"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <p className="font-serif text-xl leading-tight text-charcoal">{item.name}</p>
+            <p className="text-lg font-medium text-gold-deep">{item.price}</p>
+          </div>
+          {item.detail && <p className="mt-1 text-sm text-taupe">{item.detail}</p>}
+          {item.note && <p className="mt-3 text-[0.95rem] leading-relaxed text-charcoal/80">{item.note}</p>}
+          {item.includes && (
+            <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
+              {item.includes.map((inc) => (
+                <li
+                  key={inc}
+                  className="rounded-full bg-linen px-3 py-1 text-[0.8rem] text-charcoal/85"
+                >
+                  {inc}
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -278,7 +372,7 @@ function Visit() {
             href={site.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-block text-sm text-wood underline underline-offset-4 hover:text-gold"
+            className="mt-3 inline-block text-sm text-wood underline underline-offset-4 hover:text-gold-deep"
           >
             Get directions
           </a>
@@ -300,7 +394,7 @@ function Visit() {
                   className="flex justify-between gap-4 border-b border-greige/70 pb-2"
                 >
                   <dt>{h.days}</dt>
-                  <dd className="text-charcoal/70">{h.time}</dd>
+                  <dd className="text-charcoal/75">{h.time}</dd>
                 </div>
               ))}
             </dl>

@@ -46,9 +46,15 @@ Local images are in `public/images/`. The gallery currently uses Unsplash stock 
 2. Point each `gallery` entry in `site.ts` at its file, for example `"/images/gallery/1.jpg"`.
 3. Remove the Unsplash `remotePatterns` entry from `next.config.ts`.
 
+## SEO
+
+Page title, description and social share previews are set in [`src/app/layout.tsx`](src/app/layout.tsx). Business details for Google (address, phone, hours) are generated from `site.ts` in [`src/lib/structured-data.ts`](src/lib/structured-data.ts). `robots.txt` and `sitemap.xml` are generated automatically.
+
+When the site gets a custom domain, set the `NEXT_PUBLIC_SITE_URL` environment variable in Vercel (for example `https://katniquenails.com`) so links point to the real domain. Until then it uses Vercel's production URL.
+
 ## Still to do
 
 - [ ] Instagram link
+- [ ] Custom favicon (still the Next.js default)
 - [ ] Real nail photos for the gallery
-- [ ] Real salon photos once the remodel is finished
 - [ ] Online booking link, if one is set up (the Book buttons call the salon for now)

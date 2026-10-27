@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Great_Vibes, Jost } from "next/font/google";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const jost = Jost({
@@ -20,10 +21,35 @@ const script = Great_Vibes({
   weight: "400",
 });
 
+const title = "Katnique Nails | Nail Salon in Henderson, NV";
+
 export const metadata: Metadata = {
-  title: "Katnique Nails | Beautiful, Healthy Nails",
-  description:
-    "Katnique Nails is a warm, welcoming nail salon where beautiful nails are healthy nails. Manicures, pedicures, gel, and nail art — never rushed.",
+  metadataBase: new URL(site.url),
+  title,
+  description: site.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title,
+    description: site.description,
+    locale: "en_US",
+    images: [
+      {
+        url: "/images/salon-floor.webp",
+        width: 1600,
+        height: 1200,
+        alt: "Inside Katnique Nails in Henderson, NV",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: site.description,
+    images: ["/images/salon-floor.webp"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

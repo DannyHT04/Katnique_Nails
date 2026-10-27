@@ -1,12 +1,29 @@
 // Business details in one place. Replace the TODO placeholders before launch.
 
-const address = "10960 S. Eastern Ave. #104, Henderson, NV 89052";
+const addressParts = {
+  street: "10960 S. Eastern Ave. #104",
+  city: "Henderson",
+  state: "NV",
+  zip: "89052",
+};
+const address = `${addressParts.street}, ${addressParts.city}, ${addressParts.state} ${addressParts.zip}`;
+
+// Set NEXT_PUBLIC_SITE_URL once there's a custom domain; Vercel's production URL is the fallback
+const url =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
 export const site = {
   name: "Katnique Nails",
+  url,
+  description:
+    "Katnique Nails is a welcoming nail salon in Henderson, NV offering manicures, pedicures, gel, dip powder, acrylics and nail art. Beautiful nails should also be healthy nails.",
   phone: "(702) 665-6856",
   phoneHref: "tel:+17026656856",
   address,
+  addressParts,
   mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Katnique Nails, ${address}`)}`,
   mapEmbedUrl: `https://maps.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`,
   bookingUrl: "tel:+17026656856", // TODO: swap for online booking link if you get one
@@ -36,8 +53,20 @@ export const gallery = [
   { src: unsplash("1735236007245-9dc6e28bbe56"), alt: "Blue and white nail art" },
 ];
 
-export type Service ={ name: string; price: string; note?: string };
-export type ServiceGroup = { title: string; tagline?: string; items: Service[] };
+export type Service = {
+  name: string;
+  price: string;
+  detail?: string; // short label after the name, e.g. massage length
+  note?: string;
+  includes?: string[];
+};
+export type ServiceGroup = {
+  title: string;
+  tagline?: string;
+  items: Service[];
+  footnote?: { title: string; text: string };
+  wide?: boolean; // spans the full width of the menu on desktop
+};
 
 export const services: ServiceGroup[] = [
   {
@@ -46,72 +75,30 @@ export const services: ServiceGroup[] = [
     items: [
       {
         name: "Classic Manicure",
-        price: "$25",
+        price: "$27",
         note: "Grooming of the nails, hand + arm massage and polish.",
       },
       {
         name: "Deluxe Manicure",
-        price: "$45",
-        note: "Relax your hand, grooming of the nails, exfoliating scrub, paraffin wax, extended hand + arm massage, and polish.",
+        price: "$43",
+        note: "Relax your hand, grooming of the nails, exfoliating scrub, extended hand + arm massage, and polish.",
       },
-      { name: "Gel Manicure", price: "$42" },
+      { name: "Gel Manicure", price: "$45" },
     ],
   },
   {
-    title: "Pedicures",
-    tagline: "Relax · Rejuvenate · You deserve it",
+    title: "Artificial Nails",
     items: [
-      {
-        name: "Basic Pedicure",
-        price: "$35",
-        note: "Standard essential foot care focused on hygiene, nail health, cuticle care, precise nail trimming and a soothing lotion massage.",
-      },
-      {
-        name: "Deluxe Pedicure",
-        price: "$55",
-        note: "Meticulous grooming, exfoliation, hydrating massage and a flawless polish for a clean, refined and beautifully finished look.",
-      },
-      {
-        name: "Collagen Infusion Therapy",
-        price: "$70",
-        note: "A softening and smoothing pedicure designed to refine skin texture and restore moisture. Leaves feet silky, comfortable, and beautifully refreshed.",
-      },
+      { name: "Gel X / Hardgel Full Set", price: "$65" },
+      { name: "Gel X / Hardgel Fill", price: "$55" },
+      { name: "Acrylic Powder Full Set", price: "$60" },
+      { name: "Acrylic Powder Fill", price: "$50" },
+      { name: "Dipping Powder", price: "$50" },
+      { name: "Dipping Powder w/ Removal", price: "$55" },
     ],
   },
   {
-    title: "Dipping Powder",
-    tagline: "Natural look · Strong hold · Long lasting",
-    items: [
-      { name: "Dipping on Natural Nails", price: "$50" },
-      { name: "Dipping on Natural Nails (with take off)", price: "$55" },
-      { name: "Dipping with Tip", price: "$60" },
-      { name: "French Dipped on Natural Nails", price: "$65" },
-      { name: "French Dipped with Tips", price: "$70" },
-    ],
-  },
-  {
-    title: "Acrylic Nails",
-    tagline: "Stronger nails · Beautiful results",
-    items: [
-      { name: "Full Set", price: "$50" },
-      { name: "Fill-In", price: "$40" },
-      { name: "Full Set with Gel", price: "$60" },
-      { name: "Fill-In with Gel", price: "$50" },
-      { name: "Full Set Ombre", price: "$70" },
-      { name: "Fill-In Ombre", price: "$60" },
-      { name: "Hybrid Gel Full Set", price: "$65" },
-      { name: "Hybrid Gel Fill-In", price: "$57" },
-      { name: "Hard Gel Full Set", price: "$65" },
-      { name: "Hard Gel Fill-In", price: "$57" },
-    ],
-  },
-  {
-    title: "Press On / Gel X",
-    tagline: "Instant style · Durable · Flawless",
-    items: [{ name: "Gel X Short Nail with Color", price: "$65" }],
-  },
-  {
-    title: "Kids Services",
+    title: "Kid's Services",
     tagline: "10 years and younger",
     items: [
       { name: "Manicure", price: "$15" },
@@ -123,28 +110,59 @@ export const services: ServiceGroup[] = [
     ],
   },
   {
-    title: "Extras",
+    title: "Pedicure",
+    wide: true,
+    tagline: "Relax · Rejuvenate · You deserve it",
     items: [
-      { name: "Nail Repair (with / without services)", price: "$5 / $10" },
-      { name: "Nail Design / Art Cut Down", price: "$5 / $5" },
-      { name: "Regular Polish Change (hand / toes)", price: "$20" },
-      { name: "Gel Polish Change (hand / toes)", price: "$35" },
-      { name: "Nails Take Off without Services", price: "$15" },
-      { name: "French / Deep French Services", price: "$10 / $15" },
-      { name: "Cat Eye / Ombre / Chrome", price: "$15" },
-      { name: "Shape / Length / Add-On Paraffin", price: "$5 / $5 / $10" },
-      { name: "Rockstar Glitter", price: "$10" },
-      { name: "Cuticle Trim", price: "$10" },
-      { name: "Shiny Buff", price: "$5" },
-      { name: "Matte Top", price: "$5" },
-      { name: "Acrylic Big Toe", price: "$10" },
+      {
+        name: "Basic Pedicure",
+        detail: "5 min massage",
+        price: "$35",
+        note: "Cuticle care, precise nail trimming, exfoliating scrub, and a soothing lotion massage.",
+        includes: ["Exfoliating Scrub", "Lotion Treatment", "Hot Towel", "Add On Callus Treatment +$10"],
+      },
+      {
+        name: "Deluxe Pedicure",
+        detail: "7 min massage",
+        price: "$55",
+        note: "An essential, precision-focused treatment featuring meticulous grooming, exfoliation, a hydrating massage, and a flawlessly clean finish.",
+        includes: ["Callus Treatment", "Exfoliating Scrub", "Hot Towel & Mask"],
+      },
+      {
+        name: "Luxury Pedicure",
+        detail: "10 min massage",
+        price: "$70",
+        note: "A softening and smoothing pedicure designed to refine skin texture and restore moisture. Leaves the feet feeling silky, comfortable, and beautifully nourished.",
+        includes: ["Callus Treatment", "Exfoliating Scrub", "Hot Stone Therapy", "Paraffin"],
+      },
+      {
+        name: "Royal Pedicure",
+        detail: "15 min massage",
+        price: "$85",
+        note: "Mineral-rich volcanic therapy is designed to deeply restore and warm tired muscles, enhance circulation, and provide grounding comfort. Infused with nourishing minerals, it also helps revitalize the skin.",
+        includes: ["Callus Treatment", "Exfoliating Scrub", "Hot Stone Therapy", "15 Minutes Massage", "Hot Towel & Mask"],
+      },
     ],
+    footnote: { title: "+ $20 for Gel", text: "Add gel polish to any pedicure service for $20." },
   },
   {
-    title: "Facial",
+    title: "Additional Services",
+    wide: true,
     items: [
-      { name: "Mini Facial", price: "$50" },
-      { name: "Deep Facial", price: "$70" },
+      { name: "Nail Repair", price: "$10+" },
+      { name: "Shiny Buff", price: "$5+" },
+      { name: "Nail Design", price: "$5+" },
+      { name: "Nail Art Cut Down", price: "$3+" },
+      { name: "Regular Polish Change (hand / toes)", price: "$20+" },
+      { name: "Gel Polish Change (hand / toes)", price: "$35+" },
+      { name: "Nails Take Off without Services", price: "$15+" },
+      { name: "French", price: "$10+" },
+      { name: "Deep French", price: "$10+" },
+      { name: "Cat Eye", price: "$10" },
+      { name: "Ombre", price: "$15+" },
+      { name: "Chrome", price: "$10" },
+      { name: "Length", price: "$5+" },
+      { name: "Add On Paraffin", price: "$10+" },
     ],
   },
 ];
