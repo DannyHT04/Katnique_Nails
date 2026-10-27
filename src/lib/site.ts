@@ -27,7 +27,7 @@ export const site = {
   mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Katnique Nails, ${address}`)}`,
   mapEmbedUrl: `https://maps.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`,
   bookingUrl: "tel:+17026656856", // TODO: swap for online booking link if you get one
-  instagram: "https://instagram.com/", // TODO
+  instagram: "https://www.instagram.com/katniquenails.lv/",
   hours: [
     { days: "Monday", time: "10:00 AM – 7:00 PM" },
     { days: "Tuesday", time: "10:00 AM – 7:00 PM" },

@@ -33,6 +33,7 @@ export function nailSalonJsonLd() {
       addressCountry: "US",
     },
     hasMap: site.mapsUrl,
+    sameAs: [site.instagram],
     openingHoursSpecification,
   };
 }

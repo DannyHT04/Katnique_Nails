@@ -54,7 +54,6 @@ When the site gets a custom domain, set the `NEXT_PUBLIC_SITE_URL` environment v
 
 ## Still to do
 
-- [ ] Instagram link
 - [ ] Custom favicon (still the Next.js default)
 - [ ] Real nail photos for the gallery
 - [ ] Online booking link, if one is set up (the Book buttons call the salon for now)
