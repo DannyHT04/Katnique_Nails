@@ -29,13 +29,13 @@ export const site = {
   bookingUrl: "https://katniquenails.glossgenius.com/",
   instagram: "https://www.instagram.com/katniquenails.lv/",
   hours: [
-    { days: "Monday", time: "10:00 AM – 7:00 PM" },
-    { days: "Tuesday", time: "10:00 AM – 7:00 PM" },
-    { days: "Wednesday", time: "10:00 AM – 7:00 PM" },
-    { days: "Thursday", time: "10:00 AM – 7:00 PM" },
-    { days: "Friday", time: "10:00 AM – 7:00 PM" },
-    { days: "Saturday", time: "10:00 AM – 7:00 PM" },
-    { days: "Sunday", time: "Closed" },
+    { days: "Monday", time: "9:30 AM – 6:30 PM" },
+    { days: "Tuesday", time: "9:30 AM – 6:30 PM" },
+    { days: "Wednesday", time: "9:30 AM – 6:30 PM" },
+    { days: "Thursday", time: "9:30 AM – 6:30 PM" },
+    { days: "Friday", time: "9:30 AM – 6:30 PM" },
+    { days: "Saturday", time: "9:30 AM – 6:30 PM" },
+    { days: "Sunday", time: "By appointment only" },
   ],
 };
 

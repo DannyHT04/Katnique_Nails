@@ -26,7 +26,7 @@ Most updates only touch [`src/lib/site.ts`](src/lib/site.ts):
 | What | Where in `site.ts` |
 | --- | --- |
 | Phone, address, Instagram, booking link (GlossGenius) | `site` |
-| Business hours (one line per day; use `"Closed"` for days off) | `site.hours` |
+| Business hours (one line per day; use `"Closed"` or `"By appointment only"` for days without regular hours) | `site.hours` |
 | Services and prices | `services` |
 | Gallery photos | `gallery` |
 
